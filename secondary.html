@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UbuCon India 2025 - Call for Proposals</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+        }
+
+        .cfp-container {
+            width: 210mm;
+            height: 297mm;
+            background: linear-gradient(135deg, #E95420 0%, #772953 50%, #2C001E 100%);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Ubuntu', sans-serif;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+        }
+
+        @media print {
+            .cfp-container {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                page-break-inside: avoid;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            @page {
+                size: A4;
+                margin: 0;
+            }
+        }
+
+        /* Animated background elements */
+        .bg-circles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .circle:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: -100px;
+            right: -50px;
+        }
+
+        .circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            bottom: -75px;
+            left: -30px;
+        }
+
+        .circle:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 40%;
+            right: -20px;
+        }
+
+        /* Terminal-style header */
+        .terminal-header {
+            background: #2C001E;
+            padding: 12px 25px;
+            border-bottom: 3px solid #E95420;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red {
+            background: #ff5f56;
+        }
+
+        .dot.yellow {
+            background: #ffbd2e;
+        }
+
+        .dot.green {
+            background: #27ca3f;
+        }
+
+        .terminal-text {
+            font-family: 'JetBrains Mono', monospace;
+            color: #00ff41;
+            font-size: 17px;
+            line-height: 1.3;
+        }
+
+        .blinking-cursor {
+            opacity: 1;
+        }
+
+        /* Main content area */
+        .content {
+            flex: 1;
+            padding: 25px 35px 20px 35px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 0;
+        }
+
+        /* Glitch effect title */
+        .main-title {
+            font-size: 72px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            text-shadow: 3px 3px 0px #E95420, -2px -2px 0px #00ffff, 2px -2px 0px #ff0080;
+            line-height: 0.9;
+        }
+
+        /* Enhanced static glitch effects */
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .glitch::before {
+            color: #ff0080;
+            transform: translate(-2px, 2px);
+            opacity: 0.8;
+        }
+
+        .glitch::after {
+            color: #00ffff;
+            transform: translate(2px, -2px);
+            opacity: 0.8;
+        }
+
+        /* Subtitle */
+        .subtitle {
+            font-size: 22px;
+            color: #FFE4B5;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+        }
+
+        /* Holographic card for deadline */
+        .deadline-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.25));
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .deadline-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        }
+
+        .deadline-title {
+            font-size: 28px;
+            color: #ffff00;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 15px #ffff00;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .deadline-date {
+            font-size: 40px;
+            color: white;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 15px #ffffff;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Submit section */
+        .submit-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .neon-text {
+            font-size: 30px;
+            color: #00ffff;
+            font-weight: 700;
+            text-shadow:
+                0 0 5px #00ffff,
+                0 0 10px #00ffff,
+                1px 1px 0px #0088aa;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .cyber-border {
+            border: 2px solid #00ffff;
+            border-radius: 10px;
+            padding: 12px 25px;
+            display: inline-block;
+            background: rgba(0, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* QR Code section */
+        .qr-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .qr-code-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qr-code-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            border: 3px solid #E95420;
+            background: white;
+            padding: 6px;
+            object-fit: contain;
+        }
+
+        .qr-label {
+            color: #FFE4B5;
+            font-size: 11px;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .scan-text {
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        /* Bottom section */
+        .bottom-section {
+            flex-shrink: 0;
+        }
+
+        /* Event info */
+        .event-info {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .event-date {
+            font-size: 24px;
+            color: #FFE4B5;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .event-location {
+            font-size: 20px;
+            color: #E95420;
+            font-weight: 700;
+        }
+
+        /* Logo section */
+        .logos {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 18px 0 12px 0;
+            padding: 18px 0;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            line-height: 1;
+            padding: 8px;
+        }
+
+        .logo-placeholder:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-text {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 17px;
+            margin-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-image:hover {
+            transform: translateY(-3px);
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo-caption {
+            color: rgba(255,255,255,0.8);
+            font-size: 15px;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.2;
+            margin-top: 2px;
+        }
+
+        .logo-container:hover .logo-caption {
+            color: #E95420;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cfp-container">
+        <!-- Animated background -->
+        <div class="bg-circles">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+
+        <!-- Terminal header -->
+        <div class="terminal-header">
+            <div class="terminal-dots">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+            <div class="terminal-text">
+                ubuntu@india:~$ ./launch_ubucon_2025.sh<br>
+                >> Initializing conference protocol...<br>
+                >> Attention !!!<br>
+                >> Status: <span style="color: #ffff00;">PROPOSALS NEEDED</span><span class="blinking-cursor">_</span>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+            <!-- Top section -->
+            <div>
+                <h1 class="main-title">
+                    <span class="glitch" data-text="CALL FOR">CALL FOR</span><br>
+                    <span class="glitch" data-text="PROPOSALS">PROPOSALS</span>
+                </h1>
+
+                <p class="subtitle">SHARE YOUR UBUNTU STORY WITH INDIA</p>
+
+                <!-- Holographic deadline card -->
+                <div class="deadline-card">
+                    <div class="deadline-title">⚡ TIME IS TICKING! ⚡</div>
+                    <div class="deadline-date">OCT 2ND</div>
+                    <div style="color: #FFE4B5; font-size: 18px; margin-top: 10px; font-weight: 400; position: relative; z-index: 2;">
+                        Hurry up and submit your proposal <span style="color: #00ffff;">before October 2</span> !!
+                    </div>
+                </div>
+
+                <!-- Submit section -->
+                <div class="submit-section">
+                    <div class="cyber-border">
+                        <div class="neon-text">SUBMIT NOW!</div>
+                    </div>
+                </div>
+
+                <!-- QR Code section -->
+                <div class="qr-section">
+                    <div class="qr-code-container">
+                        <img src="ubuconQRcode.jpeg" alt="QR Code for CFP" class="qr-code-image">
+                    </div>
+                    <div class="scan-text">
+                        Scan to Submit<br>
+                        Your Proposal<br>
+                        <span style="color: #E95420; font-size: 14px; font-weight: 600; margin-top: 8px; display: block;">for UbuCon India 2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom section -->
+            <div class="bottom-section">
+                <div class="event-info">
+                    <div class="event-date">15-16 NOV, 2025</div>
+                    <div class="event-location">IISc, BENGALURU</div>
+                </div>
+
+                <div class="logos">
+                    <div class="logo-container">
+                        <img src="ubuntu-in-logo.png" alt="UbuCon India" class="logo-image">
+                        <div class="logo-caption">UbuCon India</div>
+                    </div>
+                   
+                    <div class="logo-container">
+                        <img src="iisc_logo.png" alt="IISc" class="logo-image">
+                        <div class="logo-caption">IISc Bengaluru</div>
+                    </div>
+                    
+                    <div class="logo-container">
+                        <img src="databased_logo.png" alt="DataBased" class="logo-image">
+                        <div class="logo-caption">DataBased</div>
+                    </div>
+                </div>
+
+                <div class="footer-text">
+                    Join the Open Source Revolution • Share Your Knowledge
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

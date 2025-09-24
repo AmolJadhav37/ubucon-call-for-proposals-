@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UbuCon India 2025 - Call for Proposals</title>
+    <title>UbuCon India 2025 - Tickets Available</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap');
-
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700;900&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             margin: 0;
             padding: 0;
             background: #000;
+            font-family: 'Ubuntu', sans-serif;
         }
 
-        .cfp-container {
+        .poster-container {
             width: 210mm;
             height: 297mm;
-            background: linear-gradient(135deg, #E95420 0%, #772953 50%, #2C001E 100%);
+            background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 15%, #e95420 35%, #d44414 55%, #8b2635 75%, #2c001e 100%);
             position: relative;
             overflow: hidden;
-            font-family: 'Ubuntu', sans-serif;
             display: flex;
             flex-direction: column;
             margin: 0 auto;
         }
 
         @media print {
-            .cfp-container {
+            .poster-container {
                 width: 210mm;
                 height: 297mm;
                 margin: 0;
                 page-break-inside: avoid;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
             
             body {
@@ -51,7 +52,7 @@
             }
         }
 
-        /* Animated background elements */
+        /* Background elements */
         .bg-circles {
             position: absolute;
             width: 100%;
@@ -66,329 +67,325 @@
         }
 
         .circle:nth-child(1) {
-            width: 200px;
-            height: 200px;
-            top: -100px;
-            right: -50px;
+            width: 250px;
+            height: 250px;
+            top: -125px;
+            right: -75px;
         }
 
         .circle:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            bottom: -75px;
-            left: -30px;
+            width: 180px;
+            height: 180px;
+            bottom: -90px;
+            left: -40px;
         }
 
         .circle:nth-child(3) {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             top: 40%;
-            right: -20px;
+            left: -30px;
         }
 
-        /* Terminal-style header */
-        .terminal-header {
-            background: #2C001E;
-            padding: 12px 25px;
-            border-bottom: 3px solid #E95420;
-            position: relative;
-            flex-shrink: 0;
+        /* Static penguins */
+        .floating-penguin {
+            position: absolute;
+            font-size: 25px;
+            opacity: 0.3;
         }
+        
+        .penguin1 { top: 80px; right: 40px; }
+        .penguin2 { top: 200px; left: 25px; }
+        .penguin3 { top: 350px; right: 60px; }
 
-        .terminal-dots {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .dot.red {
-            background: #ff5f56;
-        }
-
-        .dot.yellow {
-            background: #ffbd2e;
-        }
-
-        .dot.green {
-            background: #27ca3f;
-        }
-
-        .terminal-text {
-            font-family: 'JetBrains Mono', monospace;
-            color: #00ff41;
-            font-size: 17px;
-            line-height: 1.3;
-        }
-
-        .blinking-cursor {
-            opacity: 1;
-        }
-
-        /* Main content area */
+        /* Main content */
         .content {
             flex: 1;
-            padding: 25px 35px 20px 35px;
+            padding: 20px;
             position: relative;
             z-index: 2;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             min-height: 0;
         }
 
-        /* Glitch effect title */
+        /* Header section */
+        .header-section {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
         .main-title {
-            font-size: 72px;
-            font-weight: 700;
+            font-size: 60px;
+            font-weight: 900;
             color: white;
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
-            text-shadow: 3px 3px 0px #E95420, -2px -2px 0px #00ffff, 2px -2px 0px #ff0080;
             line-height: 0.9;
+            margin-bottom: 8px;
+            text-shadow: 
+                3px 3px 0px rgba(0,0,0,0.4),
+                -2px -2px 0px rgba(255,255,255,0.1),
+                0 0 25px rgba(255,255,255,0.3);
+            letter-spacing: 3px;
         }
 
-        /* Enhanced static glitch effects */
-        .glitch {
-            position: relative;
-            display: inline-block;
-        }
-
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .glitch::before {
-            color: #ff0080;
-            transform: translate(-2px, 2px);
-            opacity: 0.8;
-        }
-
-        .glitch::after {
-            color: #00ffff;
-            transform: translate(2px, -2px);
-            opacity: 0.8;
-        }
-
-        /* Subtitle */
-        .subtitle {
-            font-size: 22px;
-            color: #FFE4B5;
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: 300;
-            letter-spacing: 1.5px;
-        }
-
-        /* Holographic card for deadline */
-        .deadline-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.25));
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            margin: 20px 0;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-
-        .deadline-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
-            transform: translateX(-50%) translateY(-50%) rotate(45deg);
-        }
-
-        .deadline-title {
-            font-size: 28px;
-            color: #ffff00;
+        .tickets-announcement {
+            font-size: 35px;
             font-weight: 700;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 15px #ffff00;
+            color: #00ff88;
             margin-bottom: 12px;
-            position: relative;
-            z-index: 2;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
         }
 
-        .deadline-date {
-            font-size: 40px;
-            color: white;
-            font-weight: 700;
-            font-family: 'JetBrains Mono', monospace;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 15px #ffffff;
-            position: relative;
-            z-index: 2;
+        .event-info {
+            font-size: 18px;
+            color: #ffe4b5;
+            margin-bottom: 8px;
+            font-weight: 400;
         }
 
-        /* Submit section */
-        .submit-section {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .neon-text {
-            font-size: 30px;
+        .fun-tagline {
+            font-size: 16px;
             color: #00ffff;
-            font-weight: 700;
-            text-shadow:
-                0 0 5px #00ffff,
-                0 0 10px #00ffff,
-                1px 1px 0px #0088aa;
+            font-style: italic;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        /* Tickets section */
+        .tickets-section {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 15px;
             margin-bottom: 10px;
-            position: relative;
         }
 
-        .cyber-border {
-            border: 2px solid #00ffff;
-            border-radius: 10px;
-            padding: 12px 25px;
-            display: inline-block;
-            background: rgba(0, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffaa00;
+            text-align: center;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* QR Code section */
-        .qr-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 25px;
-            margin: 20px 0;
-            flex-wrap: wrap;
+        .ticket-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
         }
 
-        .qr-code-container {
+        .ticket-card {
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 12px;
+            text-align: center;
+            min-height: 95px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 10px;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .qr-code-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            border: 3px solid #E95420;
-            background: white;
-            padding: 6px;
-            object-fit: contain;
-        }
-
-        .qr-label {
-            color: #FFE4B5;
-            font-size: 11px;
-            font-weight: 500;
-            text-align: center;
+        .ticket-type {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
             line-height: 1.2;
         }
 
-        .scan-text {
-            color: white;
-            font-size: 18px;
-            font-weight: 500;
-            text-align: center;
-            line-height: 1.3;
+        .ticket-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: #00ff88;
+            margin-bottom: 8px;
+            text-shadow: 0 0 12px rgba(0, 255, 136, 0.4);
         }
 
-        /* Bottom section */
-        .bottom-section {
+        .ticket-status {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .available {
+            background: linear-gradient(45deg, #00ff88, #00cc70);
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+        }
+
+        .sold-out {
+            background: linear-gradient(45deg, #ff4444, #cc3333);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 68, 68, 0.4);
+        }
+
+        .supporter-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(45deg, rgba(233, 84, 32, 0.4), rgba(255, 170, 0, 0.4));
+            border: 2px solid #e95420;
+            min-height: 90px;
+            box-shadow: 0 10px 25px rgba(233, 84, 32, 0.3);
+        }
+
+        .supporter-card .ticket-price {
+            font-size: 28px;
+        }
+
+        .includes {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-top: 6px;
+            line-height: 1.3;
+            font-weight: 500;
+        }
+
+        /* QR and registration section */
+        .qr-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .qr-code-container {
+            width: 160px;
+            height: 160px;
+            background: white;
+            border-radius: 12px;
+            padding: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             flex-shrink: 0;
         }
 
-        /* Event info */
-        .event-info {
+        .qr-code-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .qr-placeholder {
+            width: 100%;
+            height: 100%;
+            background: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #666;
             text-align: center;
-            margin: 20px 0;
-        }
-
-        .event-date {
-            font-size: 24px;
-            color: #FFE4B5;
+            line-height: 1.1;
             font-weight: 500;
-            margin-bottom: 8px;
         }
 
-        .event-location {
-            font-size: 20px;
-            color: #E95420;
+        .action-text {
+            flex: 1;
+        }
+
+        .register-title {
+            font-size: 28px;
             font-weight: 700;
+            color: #00ff88;
+            margin-bottom: 6px;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
         }
 
-        /* Logo section */
+        .register-subtitle {
+            font-size: 18px;
+            color: #ffaa00;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .register-note {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.4;
+        }
+
+        /* Linux joke section */
+        .linux-joke {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #00ff88;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .joke-text {
+            font-size: 16px;
+            color: #00ff88;
+            font-weight: 500;
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .joke-subtext {
+            font-size: 12px;
+            color: #ffaa00;
+            font-style: italic;
+        }
+
+        /* Event details */
+        .event-details {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .date-venue {
+            font-size: 30px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .location {
+            font-size: 22px;
+            color: #ffaa00;
+            font-weight: 600;
+            line-height: 1.3;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+        }
+
         .logos {
             display: flex;
             justify-content: space-around;
             align-items: center;
-            margin: 18px 0 12px 0;
-            padding: 18px 0;
-            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            margin: 10px 0 8px 0;
+            padding: 12px 0;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
             flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .logo-placeholder {
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 9px;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-            line-height: 1;
-            padding: 8px;
-        }
-
-        .logo-placeholder:hover {
-            transform: translateY(-3px);
-        }
-
-        .footer-text {
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 17px;
-            margin-top: 12px;
-            padding-bottom: 12px;
-        }
-
-        .logo-image {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .logo-image:hover {
-            transform: translateY(-3px);
+            gap: 8px;
         }
 
         .logo-container {
@@ -398,115 +395,209 @@
             gap: 6px;
         }
 
+        .logo-image {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo-placeholder {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            line-height: 1.1;
+            padding: 8px;
+        }
+
+        .logo-image,
+        .logo-placeholder {
+            transition: none;
+        }
+
+        .logo-image:hover,
+        .logo-placeholder:hover {
+            transform: none;
+        }
+
         .logo-caption {
-            color: rgba(255,255,255,0.8);
-            font-size: 15px;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 16px;
             font-weight: 500;
             text-align: center;
             line-height: 1.2;
-            margin-top: 2px;
+            margin-top: 4px;
         }
 
         .logo-container:hover .logo-caption {
-            color: #E95420;
+            color: #e95420;
+        }
+
+        .tagline {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            margin-top: 6px;
+            padding-bottom: 8px;
+            font-weight: 400;
+        }
+
+        /* Ubuntu symbol */
+        .ubuntu-symbol {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            opacity: 0.25;
+        }
+
+        .ubuntu-dot {
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .ubuntu-dot:nth-child(1) {
+            width: 16px;
+            height: 16px;
+            top: 0;
+            left: 17px;
+            background: #e95420;
+        }
+
+        .ubuntu-dot:nth-child(2) {
+            width: 13px;
+            height: 13px;
+            top: 20px;
+            left: 0;
+            background: #ffaa00;
+        }
+
+        .ubuntu-dot:nth-child(3) {
+            width: 13px;
+            height: 13px;
+            top: 20px;
+            right: 0;
+            background: #00ff88;
         }
     </style>
 </head>
-
 <body>
-    <div class="cfp-container">
-        <!-- Animated background -->
+    <div class="poster-container">
+        <!-- Background elements -->
         <div class="bg-circles">
             <div class="circle"></div>
             <div class="circle"></div>
             <div class="circle"></div>
         </div>
 
-        <!-- Terminal header -->
-        <div class="terminal-header">
-            <div class="terminal-dots">
-                <div class="dot red"></div>
-                <div class="dot yellow"></div>
-                <div class="dot green"></div>
-            </div>
-            <div class="terminal-text">
-                ubuntu@india:~$ ./launch_ubucon_2025.sh<br>
-                >> Initializing conference protocol...<br>
-                >> Attention !!!<br>
-                >> Status: <span style="color: #ffff00;">PROPOSALS NEEDED</span><span class="blinking-cursor">_</span>
-            </div>
+        <!-- Floating penguins -->
+        <div class="floating-penguin penguin1">🐧</div>
+        <div class="floating-penguin penguin2">🐧</div>
+        <div class="floating-penguin penguin3">🐧</div>
+
+        <!-- Ubuntu symbol -->
+        <div class="ubuntu-symbol">
+            <div class="ubuntu-dot"></div>
+            <div class="ubuntu-dot"></div>
+            <div class="ubuntu-dot"></div>
         </div>
 
-        <!-- Main content -->
         <div class="content">
-            <!-- Top section -->
-            <div>
-                <h1 class="main-title">
-                    <span class="glitch" data-text="CALL FOR">CALL FOR</span><br>
-                    <span class="glitch" data-text="PROPOSALS">PROPOSALS</span>
-                </h1>
+            <!-- Header -->
+            <div class="header-section">
+                <div class="tickets-announcement">TICKETS NOW AVAILABLE</div>
+                <div class="main-title">UBUCON INDIA 2025</div>
+                <div class="event-info">Join the Ubuntu Community Revolution</div>
+                <div class="fun-tagline">We don't need reboots every 5 minutes! plus Our penguins are cooler than windows! 🐧</div>
+            </div>
 
-                <p class="subtitle">SHARE YOUR UBUNTU STORY WITH INDIA</p>
-
-                <!-- Holographic deadline card -->
-                <div class="deadline-card">
-                    <div class="deadline-title">⚡ TIME IS TICKING! ⚡</div>
-                    <div class="deadline-date">OCT 2ND</div>
-                    <div style="color: #FFE4B5; font-size: 18px; margin-top: 10px; font-weight: 400; position: relative; z-index: 2;">
-                        Hurry up and submit your proposal <span style="color: #00ffff;">before October 2</span> !!
+            <!-- Tickets section -->
+            <div class="tickets-section">
+                <h2 class="section-title">Available Passes</h2>
+                <div class="ticket-grid">
+                    <div class="ticket-card">
+                        <div class="ticket-type">Early Bird Student</div>
+                        <div class="ticket-price">₹200</div>
+                        <div class="ticket-status sold-out">Sold Out</div>
+                        <div class="includes">Conference access for both days • Lunch on both days • Participation certificate • Exclusive merchandise</div>
                     </div>
-                </div>
-
-                <!-- Submit section -->
-                <div class="submit-section">
-                    <div class="cyber-border">
-                        <div class="neon-text">SUBMIT NOW!</div>
+                    
+                    <div class="ticket-card">
+                        <div class="ticket-type">Student Pass</div>
+                        <div class="ticket-price">₹350</div>
+                        <div class="ticket-status available">Available</div>
+                        <div class="includes">Conference access for both days • Lunch on both days • Participation certificate • Exclusive merchandise</div>
                     </div>
-                </div>
-
-                <!-- QR Code section -->
-                <div class="qr-section">
-                    <div class="qr-code-container">
-                        <img src="ubuconQRcode.jpeg" alt="QR Code for CFP" class="qr-code-image">
+                    
+                    <div class="ticket-card">
+                        <div class="ticket-type">Early Bird Professional</div>
+                        <div class="ticket-price">₹500</div>
+                        <div class="ticket-status available">Available</div>
+                        <div class="includes">Conference access for both days • Lunch on both days • Participation certificate • Exclusive merchandise</div>
                     </div>
-                    <div class="scan-text">
-                        Scan to Submit<br>
-                        Your Proposal<br>
-                        <span style="color: #E95420; font-size: 14px; font-weight: 600; margin-top: 8px; display: block;">for UbuCon India 2025</span>
+                    
+                    <div class="ticket-card">
+                        <div class="ticket-type">Professional Pass</div>
+                        <div class="ticket-price">₹600</div>
+                        <div class="ticket-status available">Available</div>
+                        <div class="includes">Conference access for both days • Lunch on both days • Participation certificate • Exclusive merchandise</div>
+                    </div>
+                    
+                    <div class="ticket-card supporter-card">
+                        <div class="ticket-type">Supporter Pass</div>
+                        <div class="ticket-price">₹2,000</div>
+                        <div class="ticket-status available">Available</div>
+                        <div class="includes">Conference access for both days • Lunch on both days • Participation certificate • Exclusive merchandise • Social media shoutout</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Bottom section -->
-            <div class="bottom-section">
-                <div class="event-info">
-                    <div class="event-date">15-16 NOV, 2025</div>
-                    <div class="event-location">IISc, BENGALURU</div>
-                </div>
+            <!-- Linux joke -->
+            <!-- <div class="linux-joke">
+                <div class="joke-text">"sudo make-sandwich" works every time! 🥪</div>
+                <div class="joke-subtext">Welcome to the world where commands actually make sense!</div>
+            </div> -->
 
-                <div class="logos">
-                    <div class="logo-container">
-                        <img src="ubuntu-in-logo.png" alt="UbuCon India" class="logo-image">
-                        <div class="logo-caption">UbuCon India</div>
-                    </div>
-                   
-                    <div class="logo-container">
-                        <img src="iisc_logo.png" alt="IISc" class="logo-image">
-                        <div class="logo-caption">IISc Bengaluru</div>
-                    </div>
-                    
-                    <div class="logo-container">
-                        <img src="databased_logo.png" alt="DataBased" class="logo-image">
-                        <div class="logo-caption">DataBased</div>
+            <!-- QR section -->
+            <div class="qr-section">
+                <div class="qr-code-container">
+                    <img src="QRfortickets.png" alt="QR Code" class="qr-code-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="qr-placeholder" style="display: none;">
+                        QR CODE<br>
+                        100x100px<br>
+                        qrcode.jpg
                     </div>
                 </div>
+                <div class="action-text">
+                    <div class="register-title">REGISTER NOW!</div>
+                    <div class="register-subtitle">Scan to Get Your Tickets</div>
+                    <div class="register-note">
+                        Limited seats available • Book yours now!!
+                    </div>
+                </div>
+            </div>
 
-                <div class="footer-text">
-                    Join the Open Source Revolution • Share Your Knowledge
+            <!-- Footer -->
+            <div class="footer">
+                <div class="event-details">
+                    <div class="date-venue">15-16 NOVEMBER, 2025</div>
+                    <div class="location">Indian Institute of Science (IISc), Bengaluru</div>
                 </div>
             </div>
         </div>
     </div>
 </body>
-
 </html>
